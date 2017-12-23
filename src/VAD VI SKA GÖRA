@@ -1,0 +1,25 @@
+
+Lärare
+- logga in                              CHECK
+- se kurser de undervisar               GUI och sen visa Teacher Arralist of courses
+- visa alla kurser                      GUI och visa arraylist of AllCourses (använd samma metod för student)
+- registrera ny kurs de undervisar      GUI och addCourse metod till Arraylist, vart ska den ligga?
+
+Student
+- logga in                              CHECK
+- visa kurser de pluggar                GUI och sen visa Student Arraylist of courses
+- visa alla kurser                      GUI och visa arraylist of AllCourses (använd samma metod för lärare)
+- registrera ny kurs att plugga         GUI och addCourse metod till Arraylist, vart ska den ligga?
+
+Admin
+- logga in                              Förberett men vet inte hur många admins vi ska ha? en class eller hårdkoda en?
+- adda nya kurser                       GUI som använder sig av addCourse fast till Course då.
+
+Kurser                                  Inget GUI, tror bara det är de jag gjort fast med addCourse metod också
+
+Tror du man måste kunna Create Teacher/Student också? Står inget om det så vi gör ju inte mer än nödvändigt
+
+VG:
+grid
+databas
+dynamiskt visande av kurser etc
