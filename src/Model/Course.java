@@ -1,7 +1,6 @@
 package Model;
 
 import java.io.Serializable;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -40,8 +39,7 @@ public class Course implements Serializable{
         this.courseID = courseID;
     }
 
-    @Override
-    public String toString() {
+    public String oneCoursetoString() {
         return "Course{" + "name='" + name + '\'' + ", courseID=" + courseID + '}';
     }
 

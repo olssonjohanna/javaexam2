@@ -8,8 +8,8 @@ import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-
 import java.util.ArrayList;
 
 public class StudentView extends javafx.application.Application{
@@ -23,7 +23,7 @@ public class StudentView extends javafx.application.Application{
             public void handle(Event event) {
                 ArrayList<Course> showInfo = ManageStudent.getCourses(currentEmail);
 
-                Scene courseScene = new Scene(new Group(new Label(showInfo)),200,100);      //fråga om hur visa arraylist på gui
+                Scene courseScene = new Scene(new Group(new Label(showInfo.toString())),200,100);
                 Stage courseStage = new Stage();
 
                 courseStage.setScene(courseScene);
@@ -34,9 +34,9 @@ public class StudentView extends javafx.application.Application{
         EventHandler handlerAllCourses = new EventHandler() {
             @Override
             public void handle(Event event) {
-                ManageCourse.getAllCourses();
+                ArrayList<Course> showInfo = ManageCourse.getAllCoursesOnString();
 
-                Scene courseScene = new Scene(new Group(new Label("ALL COURSES")),200,100);
+                Scene courseScene = new Scene(new Group(new Label(showInfo.toString())),200,100);
                 Stage courseStage = new Stage();
 
                 courseStage.setScene(courseScene);
@@ -47,9 +47,52 @@ public class StudentView extends javafx.application.Application{
 
         EventHandler handlerRegistre = new EventHandler() {
             public void handle(Event handle){
-                //denna funktionen ska ta en course från course via ID och lägga till i listan över Student arraylist
+
+                Label label1 = new Label("Course name: ");
+                label1.setLayoutX(150);
+                label1.setLayoutY(160);
+
+                TextField courseName= new TextField();
+                courseName.setLayoutX(200);
+                courseName.setLayoutY(130);
+
+                Label label = new Label("Course ID: ");
+                label.setLayoutX(150);
+                label.setLayoutY(260);
+
+                TextField courseID = new TextField();
+                courseID.setLayoutX(200);
+                courseID.setLayoutY(130);
+
+                EventHandler handlerAddCourse = new EventHandler() {
+                    @Override
+                    public void handle(Event event) {
+                        String coursename= courseName.getText();
+                        String courseid = courseID.getText();
+
+                        boolean result = ManageStudent.addCourse(currentEmail, coursename, courseid);
+
+                        if (result == true);
+                            //visa en popup som är kurs added
+                        else;
+                            //visa popup att något gick fel
+                    }
+                };
+
+                Button buttonT = new Button("Add Course");
+                buttonT.setLayoutX(150);
+                buttonT.setLayoutY(360);
+                buttonT.setOnMouseClicked(handlerAddCourse);
+
+                Scene courseScene = new Scene(new Group(new Label()),200,100);
+                Stage courseStage = new Stage();
+
+                courseStage.setScene(courseScene);
+                courseStage.show();
+
             }
         };
+
 
         Button buttonT = new Button("My courses");
         buttonT.setLayoutX(150);

@@ -25,6 +25,10 @@ public class Student implements Serializable {
         this.courses = courses;
     }
 
+    public void addCourse(Course course){
+        courses.add(course);
+    }
+
     public String getName() {
         return name;
     }
