@@ -5,6 +5,7 @@ import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -73,17 +74,21 @@ public class LoginPage {
                 String password = teacherPassword.getText();
                 boolean resultOfLogin = controller.tryLoginTeacher(email,password);
 
-                if(resultOfLogin == true){
-                    Scene loginScene = new Scene(new Group(new Label("WELCOME")),200,100);
-                    Stage loginStage = new Stage();
-                    loginStage.setScene(loginScene);
-                    loginStage.show();
+                if(resultOfLogin == true) {
+                    Stage teacherStage = new Stage();
+                    TeacherView sv = new TeacherView();
+                    primaryStage.close();
+                    try {
+                        sv.start(teacherStage);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                 }
                 else{
-                    Scene loginScene = new Scene(new Group(new Label("Wrong password or user, Try again")),200,100);
-                    Stage loginStage = new Stage();
-                    loginStage.setScene(loginScene);
-                    loginStage.show();
+                    Alert alert2 = new Alert(Alert.AlertType.INFORMATION);
+                    alert2.setTitle("Error");
+                    alert2.setHeaderText("Wrong login or password");
+                    alert2.showAndWait();
                 }
             }
         };
@@ -96,48 +101,48 @@ public class LoginPage {
                 boolean resultOfLogin = controller.tryLoginStudent(email,password);
 
                 if(resultOfLogin == true){
-
-                    Scene loginScene = new Scene(new Group(new Label("s")),200,100);
-                    Stage loginStage = new Stage();
-                    loginStage.setScene(loginScene);
-                    loginStage.show();
+                    Stage studentStage = new Stage();
+                    StudentView sv = new StudentView();
+                    primaryStage.close();
+                    try {
+                        sv.start(studentStage);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                 }
                 else{
-                    Scene loginScene = new Scene(new Group(new Label("Wrong password ord user, Try again")),200,100);
-                    Stage loginStage = new Stage();
-                    loginStage.setScene(loginScene);
-                    loginStage.show();
+                    Alert alert2 = new Alert(Alert.AlertType.INFORMATION);
+                    alert2.setTitle("Error");
+                    alert2.setHeaderText("Wrong login or password");
+                    alert2.showAndWait();
                 }
-
             }
         };
 
         EventHandler handlerAdmin = new EventHandler() {
             public void handle(Event handle){
-
                 String email = adminLogin.getText();
                 String passowrd = adminPassword.getText();
 
                 boolean resultOfLogin = controller.tryLoginAdmin(email,passowrd);
 
-
                 if (resultOfLogin == true){
-
-                    Scene adminLoginScene = new Scene(new Group(new Label("Welcom Admin")),200,100);
-                    Stage adminLoginStage = new Stage();
-                    adminLoginStage.setScene(adminLoginScene);
-                    adminLoginStage.show();
-
+                    Stage adminStage = new Stage();
+                    AdminView sv = new AdminView();
+                    primaryStage.close();
+                    try {
+                        sv.start(adminStage);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                 }
                 else {
-                    Scene adminLoginScene = new Scene(new Group(new Label("Wrong Email or Passowrd")),200,100);
-                    Stage adminLoginStage = new Stage();
-                    adminLoginStage.setScene(adminLoginScene);
-                    adminLoginStage.show();
+                    Alert alert2 = new Alert(Alert.AlertType.INFORMATION);
+                    alert2.setTitle("Error");
+                    alert2.setHeaderText("Wrong password or login");
+                    alert2.showAndWait();
                 }
             }
-            //Ska vi hårdkoda en admin eller ha en klass med admins, eventuellt en class med bara 1 admin då?
-
 
         };
 

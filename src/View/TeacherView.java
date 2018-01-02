@@ -9,6 +9,7 @@ import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -75,10 +76,18 @@ public class TeacherView {
                         int courseid = Integer.parseInt(courseID.getText());
                         boolean result = ManageStudent.addCourse(currentEmail, coursename, courseid);
 
-                        if (result == true);
-                            //visa en popup som är kurs added
-                        else;
-                        //visa popup att något gick fel
+                        if (result == true) {
+                            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                            alert.setTitle("Information");
+                            alert.setHeaderText("Course added");
+                            alert.showAndWait();
+                        }
+                        else {
+                            Alert alert2 = new Alert(Alert.AlertType.INFORMATION);
+                            alert2.setTitle("Error");
+                            alert2.setHeaderText("Something went wrong");
+                            alert2.showAndWait();
+                        }
                     }
                 };
 

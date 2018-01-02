@@ -1,12 +1,12 @@
 package View;
 
-
 import Controller.Controller;
 import Model.*;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -17,18 +17,32 @@ public class StudentView extends javafx.application.Application{
     private String currentEmail = "nothing";
     private Controller controller;
 
-    public void start(Stage primaryStage) throws Exception{
+    public void start(Stage studentstage) throws Exception{
 
           EventHandler handlerMyCourses = new EventHandler() {
             @Override
             public void handle(Event event) {
+
                 ArrayList<Course> showInfo = ManageStudent.getCourses(currentEmail);
 
-                Scene courseScene = new Scene(new Group(new Label(showInfo.toString())),200,100);
-                Stage courseStage = new Stage();
 
-                courseStage.setScene(courseScene);
-                courseStage.show();
+               if (showInfo.equals(null) || (showInfo.size()==0) ){
+                   Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                   alert.setTitle("Information");
+                   alert.setHeaderText("No courses found");
+                   alert.showAndWait();
+               }
+
+                try {
+                    studentstage.close();
+                    Stage courseStage = new Stage();
+                    Scene courseScene = new Scene(new Group(new Label(showInfo.toString())),200,100);
+                    courseStage.setScene(courseScene);
+                    courseStage.show();
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
         };
 
@@ -72,10 +86,18 @@ public class StudentView extends javafx.application.Application{
                         int courseid = Integer.parseInt(courseID.getText());
                         boolean result = ManageStudent.addCourse(currentEmail, coursename, courseid);
 
-                        if (result == true);
-                            //visa en popup som är kurs added
-                        else;
-                            //visa popup att något gick fel
+                        if (result == true) {
+                            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                            alert.setTitle("Information");
+                            alert.setHeaderText("Course added");
+                            alert.showAndWait();
+                        }
+                        else {
+                            Alert alert2 = new Alert(Alert.AlertType.INFORMATION);
+                            alert2.setTitle("Error");
+                            alert2.setHeaderText("Something went wrong");
+                            alert2.showAndWait();
+                        }
                     }
                 };
 
@@ -89,10 +111,8 @@ public class StudentView extends javafx.application.Application{
 
                 courseStage.setScene(courseScene);
                 courseStage.show();
-
             }
         };
-
 
         Button buttonT = new Button("My courses");
         buttonT.setLayoutX(150);
@@ -112,8 +132,8 @@ public class StudentView extends javafx.application.Application{
         Group group = new Group(buttonT, buttonS, buttonA);
         Scene scene = new Scene(group,500,500);
 
-        primaryStage.setScene(scene);
-        primaryStage.show();
+        studentstage.setScene(scene);
+        studentstage.show();
     }
 }
 

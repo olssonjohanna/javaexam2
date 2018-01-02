@@ -4,7 +4,7 @@ package Model;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Admin implements Serializable{
+public class Admin implements Serializable {
     private String email;
     private String password;
     private String name;
@@ -48,11 +48,9 @@ public class Admin implements Serializable{
         this.name = name;
     }
 
-    public static boolean newCourse( String name, int id){
-        Course courseToAdd = new Course(name,id);
+    public static boolean newCourse(String name, int id) {
+        Course courseToAdd = new Course(name, id);
         course.add(courseToAdd);
         return true;
-
     }
-
 }

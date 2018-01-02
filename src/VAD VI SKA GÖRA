@@ -2,19 +2,21 @@ Lärare
 - logga in                              CHECK
 - se kurser de undervisar               CHECK
 - visa alla kurser                      CHECK
-- registrera ny kurs de undervisar      GUI + funktion (kopiera när student är klar)
+- registrera ny kurs de undervisar      CHECK
 
 Student
 - logga in                              CHECK
 - visa kurser de pluggar                CHECK
 - visa alla kurser                      CHECK
-- registrera ny kurs att plugga         GUI + funktion
+- registrera ny kurs att plugga         CHECK
 
 Admin
-- logga in                              FADI
-- adda nya kurser                       FADI
+- logga in                              CHECK
+- adda nya kurser                       CHECK
 
 Kurser                                  CHECK
+
+
 
 Övrigt:
 - Unittester en klass
@@ -22,5 +24,5 @@ Kurser                                  CHECK
 VG:
 två separata projekt
 grid
-databas istället för serilaziation
+databas istället för serilaziation      NEJ
 dynamiskt visande av kurser etc

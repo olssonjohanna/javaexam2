@@ -2,11 +2,14 @@ package View;
 
 import Controller.Controller;
 import Model.Admin;
+import Model.Course;
 import Model.ManageCourse;
+import Model.ManageStudent;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -24,9 +27,9 @@ public class AdminView {
         EventHandler handlerAllCourses = new EventHandler() {
             @Override
             public void handle(Event event) {
-                ManageCourse.getAllCourses();
+                ArrayList<Course> show = ManageCourse.getAllCoursesOnString();
 
-                Scene courseScene = new Scene(new Group(new Label("ALL COURSES")), 200, 100);
+                Scene courseScene = new Scene(new Group(new Label(show.toString())), 200, 100);
                 Stage courseStage = new Stage();
 
                 courseStage.setScene(courseScene);
@@ -59,9 +62,21 @@ public class AdminView {
                     public void handle(Event event) {
                         String coursename = courseName.getText();
                         int courseid = Integer.parseInt(courseID.getText());
-                        Admin.newCourse(coursename, courseid);
 
+                        boolean result = Admin.newCourse(coursename, courseid);
 
+                        if (result == true) {
+                            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                            alert.setTitle("Information");
+                            alert.setHeaderText("Course added");
+                            alert.showAndWait();
+                        }
+                        else {
+                            Alert alert2 = new Alert(Alert.AlertType.INFORMATION);
+                            alert2.setTitle("Error");
+                            alert2.setHeaderText("Something went wrong");
+                            alert2.showAndWait();
+                        }
                     }
                 };
 
