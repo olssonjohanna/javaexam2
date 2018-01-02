@@ -1,10 +1,7 @@
 package View;
 
 import Controller.Controller;
-import Model.Course;
-import Model.ManageStudent;
-import Model.ManageTeacher;
-import Model.Teacher;
+import Model.*;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.scene.Group;
@@ -21,33 +18,59 @@ public class TeacherView {
     private String currentEmail = "nothing";
     private Controller controller;
 
-    public void start(Stage primaryStage) throws Exception{
+    public void start(Stage studentStage) throws Exception{
 
         EventHandler handlerMyCourses = new EventHandler() {
             @Override
             public void handle(Event event) {
                 ArrayList<Course> showThis = ManageTeacher.getCourses(currentEmail);
 
-                Scene courseScene = new Scene(new Group(new Label(showThis.toString())),200,100);
-                Stage courseStage = new Stage();
+                if (showThis == null || (showThis.size()==0) ){
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Information");
+                    alert.setHeaderText("No courses found");
+                    alert.showAndWait();
+                }
 
-                courseStage.setScene(courseScene);
-                courseStage.show();
+                else {
+
+                    try {
+                        studentStage.close();
+                        Stage courseStage = new Stage();
+                        Scene courseScene = new Scene(new Group(new Label(showThis.toString())), 200, 100);
+                        courseStage.setScene(courseScene);
+                        courseStage.show();
+
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
             }
         };
 
         EventHandler handlerAllCourses = new EventHandler() {
             @Override
             public void handle(Event event) {
-              //  ArrayList<Course> allCourses = Course.getAllCourses;
+                ArrayList<Course> showInfo = ManageCourse.getAllCoursesOnString();
 
-                Scene courseScene = new Scene(new Group(new Label("ALL COURSES")),200,100);
-                Stage courseStage = new Stage();
-
-                courseStage.setScene(courseScene);
-                courseStage.show();
-
+                if (showInfo == null || (showInfo.size()==0) ){
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Information");
+                    alert.setHeaderText("No courses found");
+                    alert.showAndWait();
                 }
+
+                try {
+                    studentStage.close();
+                    Stage courseStage = new Stage();
+                    Scene courseScene = new Scene(new Group(new Label(showInfo.toString())),500,500);
+                    courseStage.setScene(courseScene);
+                    courseStage.show();
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
         };
 
         EventHandler handlerRegistre = new EventHandler() {
@@ -58,16 +81,16 @@ public class TeacherView {
                 label1.setLayoutY(160);
 
                 TextField courseName= new TextField();
-                courseName.setLayoutX(200);
-                courseName.setLayoutY(130);
+                courseName.setLayoutX(250);
+                courseName.setLayoutY(160);
 
                 Label label = new Label("Course ID: ");
                 label.setLayoutX(150);
                 label.setLayoutY(260);
 
                 TextField courseID = new TextField();
-                courseID.setLayoutX(200);
-                courseID.setLayoutY(130);
+                courseID.setLayoutX(250);
+                courseID.setLayoutY(260);
 
                 EventHandler handlerAddCourse = new EventHandler() {
                     @Override
@@ -91,16 +114,17 @@ public class TeacherView {
                     }
                 };
 
-                Button buttonT = new Button("Add Course");
-                buttonT.setLayoutX(150);
-                buttonT.setLayoutY(360);
-                buttonT.setOnMouseClicked(handlerAddCourse);
+                Button buttonA = new Button("Add Course");
+                buttonA.setLayoutX(150);
+                buttonA.setLayoutY(360);
+                buttonA.setOnMouseClicked(handlerAddCourse);
 
-                Scene courseScene = new Scene(new Group(new Label()),200,100);
-                Stage courseStage = new Stage();
+                Group group = new Group(label,label1,courseName, courseID,buttonA);
+                Stage stage = new Stage();
+                Scene scene = new Scene(group,500,500);
 
-                courseStage.setScene(courseScene);
-                courseStage.show();
+                stage.setScene(scene);
+                stage.show();
 
             }
         };
@@ -124,8 +148,8 @@ public class TeacherView {
         Group group = new Group(buttonT, buttonS, buttonA);
         Scene scene = new Scene(group,500,500);
 
-        primaryStage.setScene(scene);
-        primaryStage.show();
+        studentStage.setScene(scene);
+        studentStage.show();
     }
 }
 

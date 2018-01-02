@@ -22,11 +22,9 @@ public class StudentView extends javafx.application.Application{
           EventHandler handlerMyCourses = new EventHandler() {
             @Override
             public void handle(Event event) {
-
                 ArrayList<Course> showInfo = ManageStudent.getCourses(currentEmail);
 
-
-               if (showInfo.equals(null) || (showInfo.size()==0) ){
+               if (showInfo == null || (showInfo.size()==0) ){
                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
                    alert.setTitle("Information");
                    alert.setHeaderText("No courses found");
@@ -51,13 +49,25 @@ public class StudentView extends javafx.application.Application{
             public void handle(Event event) {
                 ArrayList<Course> showInfo = ManageCourse.getAllCoursesOnString();
 
-                Scene courseScene = new Scene(new Group(new Label(showInfo.toString())),200,100);
-                Stage courseStage = new Stage();
+                if (showInfo == null || (showInfo.size()==0) ){
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Information");
+                    alert.setHeaderText("No courses found");
+                    alert.showAndWait();
+                }
 
-                courseStage.setScene(courseScene);
-                courseStage.show();
+                try {
+                    studentstage.close();
+                    Stage courseStage = new Stage();
+                    Scene courseScene = new Scene(new Group(new Label(showInfo.toString())),200,100);
+                    courseStage.setScene(courseScene);
+                    courseStage.show();
 
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
+
         };
 
         EventHandler handlerRegistre = new EventHandler() {

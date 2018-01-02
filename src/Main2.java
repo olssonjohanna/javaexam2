@@ -17,7 +17,6 @@ public class Main2 {
         teachers.addTeacher(tt2);
         ManageTeacher.saveTeachers(teachers);
 
-
         Admin ad = new Admin("fo@", "fo","fadi");
         Admin bb = new Admin("jojo@", "jojo","johanna");
         AllAdmins admins = new AllAdmins();
@@ -25,6 +24,14 @@ public class Main2 {
         admins.addAdmin(bb);
         ManageAdmin.saveAdmins(admins);
 
-        
+        Course cc = new Course("matte", 3);
+        Course c1 = new Course("samhäll", 1);
+        Course c2 = new Course("data", 2);
+        AllCourses courses = new AllCourses();
+        courses.addCourse(cc);
+        courses.addCourse(c1);
+        courses.addCourse(c2);
+        ManageCourse.saveCourses(courses);
+
     }
 }
