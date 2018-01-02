@@ -21,7 +21,7 @@ public class Admin implements Serializable{
         this.email = email;
         this.password = password;
         this.name = name;
-        //this.course = course;
+        this.course = course;
     }
 
     public String getEmail() {
@@ -48,10 +48,10 @@ public class Admin implements Serializable{
         this.name = name;
     }
 
-    public static void newCourse( String name, int id){
+    public static boolean newCourse( String name, int id){
         Course courseToAdd = new Course(name,id);
         course.add(courseToAdd);
-
+        return true;
 
     }
 

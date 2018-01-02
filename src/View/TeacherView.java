@@ -1,7 +1,10 @@
 package View;
 
 import Controller.Controller;
-import Model.*;
+import Model.Course;
+import Model.ManageStudent;
+import Model.ManageTeacher;
+import Model.Teacher;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.scene.Group;
@@ -35,13 +38,14 @@ public class TeacherView {
         EventHandler handlerAllCourses = new EventHandler() {
             @Override
             public void handle(Event event) {
-                ArrayList<Course> showThis = ManageCourse.getAllCoursesOnString();
+              //  ArrayList<Course> allCourses = Course.getAllCourses;
 
-                Scene courseScene = new Scene(new Group(new Label(showThis.toString())),200,100);
+                Scene courseScene = new Scene(new Group(new Label("ALL COURSES")),200,100);
                 Stage courseStage = new Stage();
 
                 courseStage.setScene(courseScene);
                 courseStage.show();
+
                 }
         };
 
@@ -68,8 +72,7 @@ public class TeacherView {
                     @Override
                     public void handle(Event event) {
                         String coursename= courseName.getText();
-                        String courseid = courseID.getText();
-
+                        int courseid = Integer.parseInt(courseID.getText());
                         boolean result = ManageStudent.addCourse(currentEmail, coursename, courseid);
 
                         if (result == true);

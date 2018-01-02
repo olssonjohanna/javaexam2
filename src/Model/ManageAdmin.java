@@ -1,31 +1,34 @@
 package Model;
 
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
+import java.io.*;
 
-public class ManageAdmin {
+public abstract class ManageAdmin {
+    public static AllAdmins getAllAdmins() {
+        AllAdmins admins = null;
+        try {
+            FileInputStream fileIn = new FileInputStream("Admins.ser");
+            ObjectInputStream in = new ObjectInputStream(fileIn);
+            admins = (AllAdmins) in.readObject();
+            in.close();
+            fileIn.close();
 
-    public abstract class ManageTeacher {
+        } catch (IOException e) {
 
-        public AllTeachers getAllTeachers() {
-            AllTeachers teachers = null;
-            try {
-                FileInputStream fileIn = new FileInputStream("teachers.ser");
-                ObjectInputStream in = new ObjectInputStream(fileIn);
-                teachers = (AllTeachers) in.readObject();
+        } catch (ClassNotFoundException c) {
 
-
-                in.close();
-                fileIn.close();
-
-            } catch (IOException i) {
-
-            } catch (ClassNotFoundException c) {
-
-            }
-            return teachers;
         }
+        return admins;
+    }
 
+
+    public static void saveAdmins(AllAdmins admins) {
+        try {
+            FileOutputStream fileOut = new FileOutputStream("Admins.ser");
+            ObjectOutputStream out = new ObjectOutputStream(fileOut);
+            out.writeObject(admins);
+            out.close();
+            fileOut.close();
+        } catch (IOException e) {
+        }
     }
 }

@@ -16,5 +16,15 @@ public class Main2 {
         teachers.addTeacher(tt);
         teachers.addTeacher(tt2);
         ManageTeacher.saveTeachers(teachers);
+
+
+        Admin ad = new Admin("fo@", "fo","fadi");
+        Admin bb = new Admin("jojo@", "jojo","johanna");
+        AllAdmins admins = new AllAdmins();
+        admins.addAdmin(ad);
+        admins.addAdmin(bb);
+        ManageAdmin.saveAdmins(admins);
+
+        
     }
 }

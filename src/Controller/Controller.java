@@ -1,50 +1,45 @@
 package Controller;
 
-import Model.Admin;
-import Model.AllStudents;
-import Model.AllTeachers;
+import Model.*;
 
 public class Controller {
     private AllTeachers teachers;
     private AllStudents students;
-    private Admin admin;
+    private AllAdmins admin;
 
     public void Controller() {
     }
 
     public boolean tryLoginTeacher(String email, String password){
+        teachers = ManageTeacher.getAllTeachers();
         for(int i=0; i<teachers.getTeachers().size() ; i++){
             if(teachers.getTeachers().get(i).getEmail().equals(email) && teachers.getTeachers().get(i).getPassword().equals(password)){
                 return true;
             }
-            else{
-                return false;
-            }
+
         }
         return false;
     }
 
     public boolean tryLoginStudent(String email, String password){
-        for(int i=0; i<students.getStudents().size() ; i++){
+        students = ManageStudent.getAllStudents();
+        for(int i=0; i < students.getStudents().size() ; i++){
             if(students.getStudents().get(i).getEmail().equals(email) && students.getStudents().get(i).getPassword().equals(password)){
                 return true;
             }
-            else{
-                return false;
-            }
+
         }
         return false;
     }
-    public boolean tryLoginAdmin(String email, String passowrd){
-         if (admin.getEmail().equals(email) && admin.getPassword().equals(passowrd)){
-             return true;
-         }else{
-             return false;
-         }
+    public boolean tryLoginAdmin(String email, String passowrd) {
+        admin = ManageAdmin.getAllAdmins();
+        for (int i = 0; i<admin.getAdmin().size(); i++)
+        if (admin.getAdmin().get(i).getEmail().equals(email) && admin.getAdmin().get(i).getPassword().equals(passowrd)) {
+            return true;
 
+        }
 
-
-
+        return false;
     }
 
 }

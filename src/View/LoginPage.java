@@ -96,7 +96,8 @@ public class LoginPage {
                 boolean resultOfLogin = controller.tryLoginStudent(email,password);
 
                 if(resultOfLogin == true){
-                    Scene loginScene = new Scene(new Group(new Label("WELCOME ")),200,100);
+
+                    Scene loginScene = new Scene(new Group(new Label("s")),200,100);
                     Stage loginStage = new Stage();
                     loginStage.setScene(loginScene);
                     loginStage.show();
@@ -121,6 +122,7 @@ public class LoginPage {
 
 
                 if (resultOfLogin == true){
+
                     Scene adminLoginScene = new Scene(new Group(new Label("Welcom Admin")),200,100);
                     Stage adminLoginStage = new Stage();
                     adminLoginStage.setScene(adminLoginScene);

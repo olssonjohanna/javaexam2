@@ -69,8 +69,7 @@ public class StudentView extends javafx.application.Application{
                     @Override
                     public void handle(Event event) {
                         String coursename= courseName.getText();
-                        String courseid = courseID.getText();
-
+                        int courseid = Integer.parseInt(courseID.getText());
                         boolean result = ManageStudent.addCourse(currentEmail, coursename, courseid);
 
                         if (result == true);
@@ -117,6 +116,4 @@ public class StudentView extends javafx.application.Application{
         primaryStage.show();
     }
 }
-
-
 
