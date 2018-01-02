@@ -1,10 +1,7 @@
 package View;
 
 import Controller.Controller;
-import Model.Admin;
-import Model.Course;
-import Model.ManageCourse;
-import Model.ManageStudent;
+import Model.*;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.scene.Group;
@@ -27,14 +24,26 @@ public class AdminView {
         EventHandler handlerAllCourses = new EventHandler() {
             @Override
             public void handle(Event event) {
-                ArrayList<Course> show = ManageCourse.getAllCoursesOnString();
+                ArrayList<Course> showThis = ManageTeacher.getCourses(currentEmail);
 
-                Scene courseScene = new Scene(new Group(new Label(show.toString())), 200, 100);
-                Stage courseStage = new Stage();
+                if (showThis == null || (showThis.size() == 0)) {
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Information");
+                    alert.setHeaderText("No courses found");
+                    alert.showAndWait();
+                } else {
 
-                courseStage.setScene(courseScene);
-                courseStage.show();
+                    try {
+                        primaryStage.close();
+                        Stage courseStage = new Stage();
+                        Scene courseScene = new Scene(new Group(new Label(showThis.toString())), 200, 100);
+                        courseStage.setScene(courseScene);
+                        courseStage.show();
 
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
             }
         };
 

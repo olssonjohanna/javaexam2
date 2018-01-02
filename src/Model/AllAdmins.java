@@ -1,11 +1,12 @@
 package Model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class AllAdmins {
+public class AllAdmins implements Serializable {
     private ArrayList<Admin> admin;
 
-    public AllAdmins(ArrayList<Teacher> teachers) {
+    public AllAdmins(ArrayList<Admin> admin) {
         this.admin = admin;
     }
 
@@ -19,7 +20,7 @@ public class AllAdmins {
                 return false;
             }
         }
-        admin .add(admin1);
+        admin.add(admin1);
         return true;
     }
 

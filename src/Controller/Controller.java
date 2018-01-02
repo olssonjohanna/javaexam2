@@ -31,10 +31,10 @@ public class Controller {
         return false;
     }
 
-    public boolean tryLoginAdmin(String email, String passowrd) {
+    public boolean tryLoginAdmin(String email, String password) {
         admin = ManageAdmin.getAllAdmins();
         for (int i = 0; i < admin.getAdmin().size(); i++) {
-            if (admin.getAdmin().get(i).getEmail().equals(email) && admin.getAdmin().get(i).getPassword().equals(passowrd)) {
+            if (admin.getAdmin().get(i).getEmail().equals(email) && admin.getAdmin().get(i).getPassword().equals(password)) {
                 return true;
             }
         }
