@@ -71,6 +71,7 @@ public class Student implements Serializable {
     @Override
     public int hashCode() {
 
+
         return Objects.hash(getEmail(), getPassword(), getName());
     }
 }
