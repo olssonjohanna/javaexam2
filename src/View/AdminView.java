@@ -26,7 +26,7 @@ public class AdminView {
             }
         };
 
-        Button buttonS = new Button("All courses");
+        Button buttonS = new Button("All courses"); //samma som student/teacher
         buttonS.setLayoutX(150);
         buttonS.setLayoutY(260);
         buttonS.setOnMouseClicked(handlerAllCourses);

@@ -1,9 +1,7 @@
 package View;
 
 import Controller.Controller;
-import Model.Course;
-import Model.Student;
-import Model.Teacher;
+import Model.*;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.scene.Group;
@@ -12,23 +10,23 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
-public class StudentView {
+public class StudentView extends javafx.application.Application{
+    private String currentEmail = "nothing";
     private Controller controller;
 
     public void start(Stage primaryStage) throws Exception{
 
-        EventHandler handlerMyCourses = new EventHandler() {
+          EventHandler handlerMyCourses = new EventHandler() {
             @Override
             public void handle(Event event) {
-                Array<Course> myCourses = Student.getCourses;
+                ArrayList<Course> showInfo = ManageStudent.getCourses(currentEmail);
 
-                Scene courseScene = new Scene(new Group(new Label("ALL COURSES")),200,100);
+                Scene courseScene = new Scene(new Group(new Label(showInfo)),200,100);      //fråga om hur visa arraylist på gui
                 Stage courseStage = new Stage();
 
-                courseStage.setScene(myCourses);
+                courseStage.setScene(courseScene);
                 courseStage.show();
             }
         };
@@ -36,12 +34,12 @@ public class StudentView {
         EventHandler handlerAllCourses = new EventHandler() {
             @Override
             public void handle(Event event) {
-                ArrayList<Course> allCourses = Course.getAllCourses;
+                ManageCourse.getAllCourses();
 
                 Scene courseScene = new Scene(new Group(new Label("ALL COURSES")),200,100);
                 Stage courseStage = new Stage();
 
-                courseStage.setScene(allCourses);
+                courseStage.setScene(courseScene);
                 courseStage.show();
 
             }

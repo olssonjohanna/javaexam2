@@ -8,7 +8,7 @@ public class Teacher implements Serializable {
     private String email;
     private String password;
     private String name;
-    private ArrayList<Course> courses;
+    public ArrayList<Course> courses;
 
     public Teacher(String email, String password, String name) {
         this.email = email;
