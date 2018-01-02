@@ -1,11 +1,13 @@
 package Controller;
 
+import Model.Admin;
 import Model.AllStudents;
 import Model.AllTeachers;
 
 public class Controller {
     private AllTeachers teachers;
     private AllStudents students;
+    private Admin admin;
 
     public void Controller() {
     }
@@ -33,4 +35,16 @@ public class Controller {
         }
         return false;
     }
+    public boolean tryLoginAdmin(String email, String passowrd){
+         if (admin.getEmail().equals(email) && admin.getPassword().equals(passowrd)){
+             return true;
+         }else{
+             return false;
+         }
+
+
+
+
+    }
+
 }

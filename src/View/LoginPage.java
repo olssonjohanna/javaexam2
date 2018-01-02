@@ -10,6 +10,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
+import javax.sound.midi.Track;
+
 public class LoginPage {
     private Controller controller;
 
@@ -110,8 +112,30 @@ public class LoginPage {
         };
 
         EventHandler handlerAdmin = new EventHandler() {
-            public void handle(Event handle){}
+            public void handle(Event handle){
+
+                String email = adminLogin.getText();
+                String passowrd = adminPassword.getText();
+
+                boolean resultOfLogin = controller.tryLoginAdmin(email,passowrd);
+
+
+                if (resultOfLogin == true){
+                    Scene adminLoginScene = new Scene(new Group(new Label("Welcom Admin")),200,100);
+                    Stage adminLoginStage = new Stage();
+                    adminLoginStage.setScene(adminLoginScene);
+                    adminLoginStage.show();
+
+                }
+                else {
+                    Scene adminLoginScene = new Scene(new Group(new Label("Wrong Email or Passowrd")),200,100);
+                    Stage adminLoginStage = new Stage();
+                    adminLoginStage.setScene(adminLoginScene);
+                    adminLoginStage.show();
+                }
+            }
             //Ska vi hårdkoda en admin eller ha en klass med admins, eventuellt en class med bara 1 admin då?
+
 
         };
 
