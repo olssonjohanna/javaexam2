@@ -1,7 +1,7 @@
 
 Lärare
 - logga in                              CHECK
-- se kurser de undervisar               GUI och sen visa Teacher Arralist of courses
+- se kurser de undervisar               GUI och sen visa Teacher Arraylist of courses
 - visa alla kurser                      GUI och visa arraylist of AllCourses (använd samma metod för student)
 - registrera ny kurs de undervisar      GUI och addCourse metod till Arraylist, vart ska den ligga?
 
@@ -20,6 +20,7 @@ Kurser                                  Inget GUI, tror bara det är de jag gjor
 Tror du man måste kunna Create Teacher/Student också? Står inget om det så vi gör ju inte mer än nödvändigt
 
 VG:
+två separata projekt
 grid
-databas
+databas istället för serilaziation
 dynamiskt visande av kurser etc

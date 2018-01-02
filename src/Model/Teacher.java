@@ -29,6 +29,14 @@ public class Teacher implements Serializable {
         return email;
     }
 
+    public ArrayList<Course> getCourses() {
+        return courses;
+    }
+
+    public void setCourses(ArrayList<Course> courses) {
+        this.courses = courses;
+    }
+
     public void setEmail(String email) {
         this.email = email;
     }

@@ -1,15 +1,19 @@
 package Model;
 
 import java.io.Serializable;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.Objects;
 
 public class Course implements Serializable{
     private String name;
     private int courseID;
+    private ArrayList<Course> allCourses;                   //alla kurser, funktion till detta ?
 
     public Course(String name, int courseID) {
         this.name = name;
         this.courseID = courseID;
+        this.allCourses = allCourses;
     }
 
     public String getName() {
@@ -22,6 +26,14 @@ public class Course implements Serializable{
 
     public int getCourseID() {
         return courseID;
+    }
+
+    public ArrayList<Course> getAllCourses() {
+        return allCourses;
+    }
+
+    public void setAllCourses(ArrayList<Course> allCourses) {
+        this.allCourses = allCourses;
     }
 
     public void setCourseID(int courseID) {
