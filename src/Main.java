@@ -1,5 +1,4 @@
 import View.LoginPage;
-import com.oracle.tools.packager.Log;
 import javafx.stage.Stage;
 
 public class Main extends javafx.application.Application {

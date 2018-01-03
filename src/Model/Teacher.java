@@ -29,7 +29,7 @@ public class Teacher implements Serializable {
         return email;
     }
 
-    public void addCourse(Course course){
+    public void addCourseTea(Course course){
         courses.add(course);
     }
 

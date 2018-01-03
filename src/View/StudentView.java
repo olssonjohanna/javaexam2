@@ -24,22 +24,22 @@ public class StudentView extends javafx.application.Application{
             public void handle(Event event) {
                 ArrayList<Course> showInfo = ManageStudent.getCourses(currentEmail);
 
-               if (showInfo == null || (showInfo.size()==0) ){
-                   Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                   alert.setTitle("Information");
-                   alert.setHeaderText("No courses found");
-                   alert.showAndWait();
-               }
+                if (showInfo == null || (showInfo.size() == 0)) {
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Information");
+                    alert.setHeaderText("No courses found");
+                    alert.showAndWait();
+                } else {
+                    try {
+                        studentstage.close();
+                        Stage courseStage = new Stage();
+                        Scene courseScene = new Scene(new Group(new Label(showInfo.toString())), 200, 100);
+                        courseStage.setScene(courseScene);
+                        courseStage.show();
 
-                try {
-                    studentstage.close();
-                    Stage courseStage = new Stage();
-                    Scene courseScene = new Scene(new Group(new Label(showInfo.toString())),200,100);
-                    courseStage.setScene(courseScene);
-                    courseStage.show();
-
-                } catch (Exception e) {
-                    e.printStackTrace();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                 }
             }
         };
@@ -78,16 +78,16 @@ public class StudentView extends javafx.application.Application{
                 label1.setLayoutY(160);
 
                 TextField courseName= new TextField();
-                courseName.setLayoutX(200);
-                courseName.setLayoutY(130);
+                courseName.setLayoutX(250);
+                courseName.setLayoutY(160);
 
                 Label label = new Label("Course ID: ");
                 label.setLayoutX(150);
                 label.setLayoutY(260);
 
                 TextField courseID = new TextField();
-                courseID.setLayoutX(200);
-                courseID.setLayoutY(130);
+                courseID.setLayoutX(250);
+                courseID.setLayoutY(260);
 
                 EventHandler handlerAddCourse = new EventHandler() {
                     @Override
@@ -111,16 +111,17 @@ public class StudentView extends javafx.application.Application{
                     }
                 };
 
-                Button buttonT = new Button("Add Course");
-                buttonT.setLayoutX(150);
-                buttonT.setLayoutY(360);
-                buttonT.setOnMouseClicked(handlerAddCourse);
+                Button buttonA = new Button("Add Course");
+                buttonA.setLayoutX(150);
+                buttonA.setLayoutY(360);
+                buttonA.setOnMouseClicked(handlerAddCourse);
 
-                Scene courseScene = new Scene(new Group(new Label()),200,100);
-                Stage courseStage = new Stage();
+                Group group = new Group(label,label1,courseName, courseID,buttonA);
+                Stage stage = new Stage();
+                Scene scene = new Scene(group,500,500);
 
-                courseStage.setScene(courseScene);
-                courseStage.show();
+                stage.setScene(scene);
+                stage.show();
             }
         };
 

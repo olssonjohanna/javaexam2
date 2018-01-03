@@ -76,7 +76,7 @@ public class LoginPage {
 
                 if(resultOfLogin == true) {
                     Stage teacherStage = new Stage();
-                    TeacherView sv = new TeacherView();
+                    TeacherView sv = new TeacherView(email);
                     primaryStage.close();
                     try {
                         sv.start(teacherStage);
@@ -125,13 +125,12 @@ public class LoginPage {
                 String passowrd = adminPassword.getText();
 
                 boolean resultOfLogin = controller.tryLoginAdmin(email,passowrd);
-
                 if (resultOfLogin == true){
                     Stage adminStage = new Stage();
-                    AdminView sv = new AdminView();
+                    AdminView av = new AdminView();
                     primaryStage.close();
                     try {
-                        sv.start(adminStage);
+                        av.start(adminStage);
                     } catch (Exception e) {
                         e.printStackTrace();
                     }

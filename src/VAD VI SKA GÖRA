@@ -1,22 +1,6 @@
-Lärare
-- logga in                              CHECK
-- se kurser de undervisar               CHECK
-- visa alla kurser                      CHECK
-- registrera ny kurs de undervisar      CHECK
-
-Student
-- logga in                              CHECK
-- visa kurser de pluggar                CHECK
-- visa alla kurser                      CHECK
-- registrera ny kurs att plugga         CHECK
-
-Admin
-- logga in                              CHECK
-- adda nya kurser                       CHECK
-
-Kurser                                  CHECK
-
-
+Lärare/Student/Admin
+- registrea ny kurs får alltid felmeddelandet "something went wrong"
+- se all kurser stänger hela fönstret efter man stängt ner dem, visar objekt i arraylist
 
 Övrigt:
 - Unittester en klass
@@ -24,5 +8,5 @@ Kurser                                  CHECK
 VG:
 två separata projekt
 grid
-databas istället för serilaziation      NEJ
+databas istället för serilaziation
 dynamiskt visande av kurser etc

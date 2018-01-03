@@ -15,7 +15,11 @@ import javafx.stage.Stage;
 import java.util.ArrayList;
 
 public class TeacherView {
-    private String currentEmail = "nothing";
+    public TeacherView(String currentEmail) {
+        this.currentEmail = currentEmail;
+    }
+
+    private String currentEmail;
     private Controller controller;
 
     public void start(Stage studentStage) throws Exception{
@@ -95,9 +99,9 @@ public class TeacherView {
                 EventHandler handlerAddCourse = new EventHandler() {
                     @Override
                     public void handle(Event event) {
-                        String coursename= courseName.getText();
+                        String coursename = courseName.getText();
                         int courseid = Integer.parseInt(courseID.getText());
-                        boolean result = ManageStudent.addCourse(currentEmail, coursename, courseid);
+                        boolean result = ManageTeacher.addCourse(currentEmail, coursename, courseid);
 
                         if (result == true) {
                             Alert alert = new Alert(Alert.AlertType.INFORMATION);

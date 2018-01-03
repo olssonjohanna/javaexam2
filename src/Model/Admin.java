@@ -8,20 +8,12 @@ public class Admin implements Serializable {
     private String email;
     private String password;
     private String name;
-    private static ArrayList<Course> course;
 
     public Admin(String email, String password, String name) {
         this.email = email;
         this.password = password;
         this.name = name;
 
-    }
-
-    public Admin(String email, String password, String name, ArrayList<Course> course) {
-        this.email = email;
-        this.password = password;
-        this.name = name;
-        this.course = course;
     }
 
     public String getEmail() {
@@ -48,9 +40,4 @@ public class Admin implements Serializable {
         this.name = name;
     }
 
-    public static boolean newCourse(String name, int id) {
-        Course courseToAdd = new Course(name, id);
-        course.add(courseToAdd);
-        return true;
-    }
 }

@@ -6,7 +6,7 @@ public abstract class ManageAdmin {
     public static AllAdmins getAllAdmins() {
         AllAdmins admins = null;
         try {
-            FileInputStream fileIn = new FileInputStream("Admins.ser");
+            FileInputStream fileIn = new FileInputStream("admins.ser");
             ObjectInputStream in = new ObjectInputStream(fileIn);
             admins = (AllAdmins) in.readObject();
             in.close();
@@ -20,10 +20,33 @@ public abstract class ManageAdmin {
         return admins;
     }
 
+    public static boolean adminAddCourse(String courseName, int courseID) {
+        AllCourses courses = null;
+        try {
+            FileInputStream fileIn = new FileInputStream("courses.ser");
+            ObjectInputStream in = new ObjectInputStream(fileIn);
+            courses = (AllCourses) in.readObject();
+
+            Course course = ManageCourse.getCourseById(courseID);
+            if (course != null) {
+                courses.addCourse(course);
+                return true;
+            }
+            in.close();
+            fileIn.close();
+
+        } catch (IOException i) {
+
+        } catch (ClassNotFoundException c) {
+
+        }
+        return false;
+    };
+
 
     public static void saveAdmins(AllAdmins admins) {
         try {
-            FileOutputStream fileOut = new FileOutputStream("Admins.ser");
+            FileOutputStream fileOut = new FileOutputStream("admins.ser");
             ObjectOutputStream out = new ObjectOutputStream(fileOut);
             out.writeObject(admins);
             out.close();

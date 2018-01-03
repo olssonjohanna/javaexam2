@@ -4,7 +4,6 @@ import java.io.*;
 import java.util.ArrayList;
 
 public abstract class ManageTeacher {
-
     public static AllTeachers getAllTeachers (){
         AllTeachers teachers = null;
         try {
@@ -58,7 +57,7 @@ public abstract class ManageTeacher {
                 if (teachers.getTeachers().get(i).getEmail().equals(teacherEmail)) {
                     Course course = ManageCourse.getCourseById(courseID);
                     if (course != null){
-                        teachers.getTeachers().get(i).addCourse(course);
+                        teachers.getTeachers().get(i).addCourseTea(course);
                         return true;
                     }
                 }
