@@ -102,7 +102,7 @@ public class LoginPage {
 
                 if(resultOfLogin == true){
                     Stage studentStage = new Stage();
-                    StudentView sv = new StudentView();
+                    StudentView sv = new StudentView(email);
                     primaryStage.close();
                     try {
                         sv.start(studentStage);
@@ -127,7 +127,7 @@ public class LoginPage {
                 boolean resultOfLogin = controller.tryLoginAdmin(email,passowrd);
                 if (resultOfLogin == true){
                     Stage adminStage = new Stage();
-                    AdminView av = new AdminView();
+                    AdminView av = new AdminView(email);
                     primaryStage.close();
                     try {
                         av.start(adminStage);

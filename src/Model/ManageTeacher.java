@@ -52,10 +52,11 @@ public abstract class ManageTeacher {
             FileInputStream fileIn = new FileInputStream("teachers.ser");
             ObjectInputStream in = new ObjectInputStream(fileIn);
             teachers = (AllTeachers) in.readObject();
-
             for (int i = 0; i < teachers.getTeachers().size(); i++){
                 if (teachers.getTeachers().get(i).getEmail().equals(teacherEmail)) {
+
                     Course course = ManageCourse.getCourseById(courseID);
+
                     if (course != null){
                         teachers.getTeachers().get(i).addCourseTea(course);
                         return true;
@@ -71,7 +72,7 @@ public abstract class ManageTeacher {
 
         }
         return false;
-    };
+    }
 
     public static void saveTeachers (AllTeachers teachers){
         try {
