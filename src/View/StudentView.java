@@ -14,7 +14,12 @@ import javafx.stage.Stage;
 import java.util.ArrayList;
 
 public class StudentView extends javafx.application.Application{
-    private String currentEmail = "nothing";
+
+    public StudentView(String currentEmail) {
+        this.currentEmail = currentEmail;
+    }
+
+    private String currentEmail;
     private Controller controller;
 
     public void start(Stage studentstage) throws Exception{

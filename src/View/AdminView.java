@@ -15,7 +15,12 @@ import javafx.stage.Stage;
 import java.util.ArrayList;
 
 public class AdminView {
-    private String currentEmail = "nothing";
+
+    public AdminView(String currentEmail) {
+        this.currentEmail = currentEmail;
+    }
+
+    private String currentEmail;
     private Controller controller;
 
     public void start(Stage adminStage) throws Exception {
